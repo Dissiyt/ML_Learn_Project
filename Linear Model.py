@@ -17,8 +17,6 @@ def create_model():
     tf.keras.layers.Dense(10, activation='softmax', name='layers_dense_2')
   ])
 
-
-
 #Sequential is useful for stacking layers where each layer has one input tensor and one output tensor. 
 # Layers are functions with a known mathematical structure that can be reused and have trainable variables. 
 # Most TensorFlow models are composed of layers. This model uses the Flatten, Dense, and Dropout layers.
@@ -88,15 +86,9 @@ tf.nn.softmax(predictions).numpy()
 
 #Define a loss function for training 
 #The loss function takes a vector of ground truth values and a vector of logits and returns a scalar loss for each example.
-#This loss is equal to the negative log probability of the true class: The loss is zero if the model is sure of the correct class.
-#loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-
 
 loss_object(y_train[:1], predictions).numpy()
 
-#model.evaluate(x_test,  y_test, verbose=2)
-#train_accuracy = (y_train, predictions)
-#train_loss = (loss_fn)
 
 model = create_model() # reset our model
 
@@ -127,20 +119,3 @@ for epoch in range(EPOCHS):
   test_loss.reset_states()
   train_accuracy.reset_states()
   test_accuracy.reset_states()
-
-
-
-
-
-#writer = tf.summary.create_file_writer('logs')
-#with writer.as_default():
-  #tf.summary.scalar('loss', train_loss, step = 1)
-  #tf.summary.scalar('loss',train_loss, step = 2)
-  #tf.summary.scalar('loss', train_loss, step = 3)
-  #tf.summary.scalar('loss', train_loss, step = 4)
-  #tf.summary.scalar('loss', train_loss, step = 5)
-  #tf.summary.scalar('accuracy', train_accuracy, step = 1)
-  #tf.summary.scalar('accuracy', train_accuracy, step = 2)
-  #tf.summary.scalar('accuracy', train_accuracy, step = 3)
-  #tf.summary.scalar('accuracy', train_accuracy, step = 4)
-  #tf.summary.scalar('accuracy', train_accuracy, step = 5)
