@@ -28,12 +28,12 @@ model.compile(loss = 'mean_squared_error',
 
 history = model.fit(celsius_q, fahrenheit_a, epochs = 500, verbose = False)
 print("Finished training the moedl")
-
+print(model.predict([100.0]))
 
 plt.xlabel('Epoch Number')
 plt.ylabel('Loss Magnitude')
 plt.plot(history.history['loss'])
 
-print(model.predict([100.0]))
+
 
 
