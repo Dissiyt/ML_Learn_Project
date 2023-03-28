@@ -34,6 +34,8 @@ plt.xlabel('Epoch Number')
 plt.ylabel('Loss Magnitude')
 plt.plot(history.history['loss'])
 
+print(plt.xlabel, plt.ylabel, plt.plot)
+
 print(model.predict([100.0]))
 
 
