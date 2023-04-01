@@ -36,4 +36,3 @@ plt.plot(history.history['loss'])
 
 
 
-
