@@ -74,6 +74,7 @@ train_dataset = train_dataset.cache().repeat().shuffle(num_train_examples).batch
 test_dataset = test_dataset.cache().batch(BATCH_SIZE)
 model.fit(train_dataset, epochs = 5, steps_per_epoch = math.ceil(num_train_examples/BATCH_SIZE))
 
+
 #Evaluate Accuracy
 test_loss, test_accuracy = model.evaluate(test_dataset, steps = math.ceil(num_test_examples/32))
 print('Accuracy on test dataset:' , test_accuracy)
@@ -130,3 +131,21 @@ for i in range(num_images):
   plt.subplot(num_rows, 2*num_cols, 2*i+2)
   plot_value_array(i, predictions, test_labels)
 plt.show()
+
+
+#Test the trained model after training and initial test
+img = test_images[0]
+
+print(img.shape)
+
+img = np.array([img])
+
+print(img.shape)
+
+predictions_single = model.predict(img)
+
+print(predictions_single)
+
+plot_value_array(0, predictions_single, test_labels)
+_ = plt.xticks(range(10), class_names, rotation=45)
+np.argmax(predictions_single[0])
