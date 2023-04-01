@@ -16,6 +16,8 @@ tqdm.tqdm = tqdm.auto.tqdm
 #Define and get dataset
 dataset, metadata = tfds.load('fashion_mnist', as_supervised = True, with_info = True)
 train_dataset, test_dataset = dataset['train'], dataset['test']
+#test_dataset = tf.data.Dataset.from_tensor_slices((x_test, y_test))
+
 
 #Array to label each image type in the dataset
 class_names = metadata.features['label'].names
@@ -60,7 +62,7 @@ test_dataset = test_dataset.cache()
 #Set up the Layers
 model = tf.keras.Sequential([
     tf.keras.layers.Flatten(input_shape = (28, 28, 1)),
-    tf.keras.layers.Dense(128, activation = tf.nn.relu),
+    tf.keras.layers.Dense(512, activation = tf.nn.relu),
     tf.keras.layers.Dense(10, activation = tf.nn.softmax)
 ])
 
@@ -149,3 +151,5 @@ print(predictions_single)
 plot_value_array(0, predictions_single, test_labels)
 _ = plt.xticks(range(10), class_names, rotation=45)
 np.argmax(predictions_single[0])
+
+plt.show()
